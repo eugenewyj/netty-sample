@@ -1,0 +1,38 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.8
+
+version = '1.0.0'
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Netty Sample', 'Implementation-Version': version
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile('io.netty:netty-all:5.0.0.Alpha1')
+
+    compile('org.slf4j:slf4j-api:1.7.6')
+    compile('org.apache.logging.log4j:log4j-slf4j-impl:2.0-rc1')
+    compile('org.apache.logging.log4j:log4j-core:2.0-rc1')
+
+    testCompile('junit:junit:4.11')
+}
+
+test {
+    systemProperties 'property': 'value'
+}
+
+uploadArchives {
+    repositories {
+       flatDir {
+           dirs 'repos'
+       }
+    }
+}
